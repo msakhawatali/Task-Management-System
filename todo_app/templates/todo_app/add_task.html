@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'todo_app/css/add_task.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="card shadow-lg" style="width: 500px; border-radius: 10px;">
+            <div class="card-header bg-primary text-white text-center py-3" style="border-radius: 10px 10px 0 0;">
+                <h4 class="mb-0">Welcome, {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}</h4>
+            </div>
+
+            <div class="card-body p-4">
+                <form action="" method="POST">
+                    {% csrf_token %} 
+                    <div class="mb-3">
+                        <label class="form-label text-secondary fw-bold">Title</label>
+                        <input type="text" name="title" class="form-control custom-input" placeholder="Title">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-secondary fw-bold">Description</label>
+                        <textarea class="form-control custom-input" name="description" rows="3" placeholder="Description"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-secondary fw-bold">Due Date</label>
+                        <input type="date" name="due_date" class="form-control custom-input">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-secondary fw-bold">Priority</label>
+                        <select class="form-select custom-input" name="priority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label text-secondary fw-bold">Status</label>
+                        <select class="form-select custom-input" name="status">
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Complete">Complete</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100 py-2 fw-bold" style="border-radius: 5px;">
+                        Add Task
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
