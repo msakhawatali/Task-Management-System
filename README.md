@@ -21,18 +21,40 @@ A clean and efficient web application to manage your daily tasks, set priorities
 * **Authentication**: Django Built-in User Authentication System
 * 
 🛠️ Installation & Setup
-1. **Clone the repository:**
+1. **Add Virtual Environment Setup**
+* Add this in README:
 ```bash
-   git clone git clone https://github.com/msakhawatali/task-management-system.git
+   python -m venv venv
+   source venv/bin/activate  (Linux/Mac)
+   venv\Scripts\activate  (Windows)
 ```
-2. **Navigate to the project directory:**
+2. **Add requirements.txt**
+* Run Terminal
+```bash
+pip freeze > requirements.txt
+```
+* Install requirements.txt
+```bash
+pip install -r requirements.txt
+```
+3. **Clone the repository:**
+```bash
+   git clone clone https://github.com/msakhawatali/task-management-system.git
+```
+4. **Navigate to the project directory:**
 ```bash
   cd task-management-system
 ```
-3. **Database Configuration:**
-* Create a database named `task_db`.
-4. **Run the application:**
-* Open in XAMPP/WAMP or start your local server.
+5. **Database Configuration:**
+```bash 
+python manage.py migrate
+python manage.py runserver
+```
+6. **Run the application:**
+```bash
+python manage.py migrate
+python manage.py runserver
+```
 # 🤝 Contributing
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
