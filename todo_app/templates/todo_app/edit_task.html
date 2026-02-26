@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'todo_app/css/add_task.css' %}">
-    <title>Add Task</title>
+    <link rel="stylesheet" href="{% static 'todo_app/css/edit_task.css' %}">
+    <title>Task Update</title>
 </head>
 <body>
     <div class="container d-flex justify-content-center mt-5">
         <div class="card shadow-lg" style="width: 500px; border-radius: 10px;">
             <div class="card-header bg-primary text-white text-center py-3" style="border-radius: 10px 10px 0 0;">
-                <h4 class="mb-0">Welcome, {% if user.is_authenticated %}{{ user.username }}{% else %}Guest{% endif %}</h4>
+                <h3 class="mb-0">Hi {{ request.user.username }}! Update your Task</h3>
+                <p class="text-muted text-center">Make changes to your task details below.</p>
             </div>
 
             <div class="card-body p-4">
@@ -19,33 +20,33 @@
                     {% csrf_token %} 
                     <div class="mb-3">
                         <label class="form-label text-secondary fw-bold">Title</label>
-                        <input type="text" name="title" class="form-control custom-input" placeholder="Title">
+                        <input type="text" name="title" value="{{ task.title}}" class="form-control custom-input" placeholder="Title">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label text-secondary fw-bold">Description</label>
-                        <textarea class="form-control custom-input" name="description" rows="3" placeholder="Description"></textarea>
+                        <textarea class="form-control custom-input" name="description" rows="3" placeholder="Description">{{ task.description }}</textarea>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label text-secondary fw-bold">Due Date</label>
-                        <input type="date" name="due_date" class="form-control custom-input">
+                        <input type="date" name="due_date" value="{{ task.due_date|date:'Y-m-d' }}" class="form-control custom-input">
                     </div>
 
                     <div class="mb-4">
                         <label class="form-label text-secondary fw-bold">Priority</label>
                         <select class="form-select custom-input" name="priority">
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
+                            <option value="low" {% if task.priority|lower == 'low' %}selected{% endif %}>Low</option>
+                            <option value="medium" {% if task.priority|lower == 'medium' %}selected{% endif %}>Medium</option>
+                            <option value="high" {% if task.priority|lower == 'high' %}selected{% endif %}>High</option>
                         </select>
                     </div>
                     <div class="mb-4">
                         <label class="form-label text-secondary fw-bold">Status</label>
                         <select class="form-select custom-input" name="status">
-                            <option value="Pending">Pending</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Complete">Complete</option>
+                            <option value="Pending" {% if task.status|lower == 'pending' %}selected{% endif %}>Pending</option>
+                            <option value="In Progress" {% if task.status|lower == 'in progress' %}selected{% endif %}>In Progress</option>
+                            <option value="Complete" {% if task.status|lower == 'complete' %}selected{% endif %}>Complete</option>
                         </select>
                     </div>
 

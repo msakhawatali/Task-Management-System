@@ -4,6 +4,7 @@ body{
     margin: 0;
 }
 
+
 .todo_title{
     display: flex;
     justify-content: space-between;
@@ -38,7 +39,7 @@ body{
 }
 
 .task-container {
-    width: 60%;         /* Is se left/right 20% space khud ban jayegi */
+    width: 60%;        
     margin: 20px auto;
 }
 
@@ -49,7 +50,7 @@ body{
     padding: 15px 20px;
     margin-bottom: 15px;
     display: flex;
-    justify-content: space-between; /* Content ek taraf, buttons doosri taraf */
+    justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
@@ -67,11 +68,12 @@ body{
     font-weight: bold;
 }
 
+
 .task-actions { display: flex; gap: 10px; }
 .btn-action {
     width: 35px;
     height: 40px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
@@ -80,3 +82,4 @@ body{
 
 .btn-complete { border: 1px solid #28a745; color: #28a745; }
 .btn-delete { border: 1px solid #dc3545; color: #dc3545; }
+.btn-edit { border: 1px solid #008000; color: #008000; }

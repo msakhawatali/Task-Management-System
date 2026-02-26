@@ -44,10 +44,36 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
+@login_required
 def delete_task(request,id):
     task_to_delete = Task.objects.get(id=id, user=request.user)
     task_to_delete.delete()
     return redirect("home")
+
+@login_required
+def edit_task(request,id):
+    task_to_edit = Task.objects.get(id=id, user=request.user)
+    if request.method == "POST":
+        data = request.POST
+        title = data.get("title")
+        description = data.get("description")
+        new_date = data.get("due_date") if data.get("due_date") else None
+        status = data.get("status" ,"Pending")
+        priority = data.get("priority", "Low")
+        if title:
+            task_to_edit.title = title
+        if description:
+            task_to_edit.description = description
+        if new_date:
+            task_to_edit.due_date = new_date
+        if status:
+            task_to_edit.status = status
+        if priority:
+            task_to_edit.priority = priority
+        task_to_edit.save()
+        return redirect('home')
+
+    return render (request, 'todo_app/edit_task.html', context={'user' : request.user, 'task' : task_to_edit})
 
 @login_required
 def add_task(request):
