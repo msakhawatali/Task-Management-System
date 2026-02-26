@@ -39,7 +39,7 @@ pip install -r requirements.txt
 ```
 3. **Clone the repository:**
 ```bash
-   git clone clone https://github.com/msakhawatali/task-management-system.git
+   git clone https://github.com/msakhawatali/task-management-system.git
 ```
 4. **Navigate to the project directory:**
 ```bash
@@ -48,11 +48,9 @@ pip install -r requirements.txt
 5. **Database Configuration:**
 ```bash 
 python manage.py migrate
-python manage.py runserver
 ```
 6. **Run the application:**
 ```bash
-python manage.py migrate
 python manage.py runserver
 ```
 # 🤝 Contributing
